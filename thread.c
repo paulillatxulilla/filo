@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:56:04 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/08 18:36:48 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:02:00 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void ft_create_thread(int it)
     i = 0;
     while(it > i)
     {
-        if (pthread_create(&th[i], NULL, &ft_routine, NULL) != 0 ||
+        if (pthread_create(&th[i], NULL, &ft_routine, &i) != 0 ||
 		pthread_join(th[i], NULL) != 0)
 		{
 			printf("Error en la creación de filósofos");
@@ -30,8 +30,9 @@ void ft_create_thread(int it)
     }
 }
 
-void	*ft_routine()
+void	*ft_routine(void	*arg)
 {
-	printf("hilo bien impreso\n");
+	int i = *(int*) arg;
+	printf("hilo %d bien impreso\n", i);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:32:35 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/03 15:47:19 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:33:36 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	ft_atoi(const char *str)
 		str++;
 	if (*str == '+')
 		str++;
-    if (*str == '-')
-        return (-1);
+	if (*str == '-')
+		return (-1);
 	while (*str == '0')
 		str++;
 	while (*str >= '0' && *str <= '9')

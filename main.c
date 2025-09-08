@@ -6,21 +6,24 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:26 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/03 15:53:06 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:32:52 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filo.h"
 
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
-    if (argc != 7 || argc != 6)
+    (void)argc;
+    /* if (argc != 7 || argc != 6)
         return (0);
     if (ft_atoi(argv[1]) == -1|| ft_atoi(argv[2]) == -1
         || ft_atoi(argv[3]) == -1|| ft_atoi(argv[4]) == -1 || ft_atoi(argv[5]) == -1)
         return (0);
     if (argv[6] && ft_atoi(argv[6]) == -1)    
-        return (0);
+        return (0); */
+    ft_create_thread(ft_atoi(argv[1]));
+    return (0);
     //argv[1] = n de filosofos
     //argv[2] = tiempo para morir (tienen que comer antes de ese tiempo)
     //argv[3] = tiempo para comer (lo que tardan en  comer)
@@ -33,5 +36,4 @@ int main(int argc, char *argv)
 	//◦ timestamp_in_ms X is thinking
 	//◦ timestamp_in_ms X died
 	//no puede pasar mucho tiempo desde que se muere un filosofo y sale que ha muerto (10 mls)
-    
 }

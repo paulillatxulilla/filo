@@ -6,13 +6,13 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:56:04 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/08 19:15:18 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:19:11 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filo.h"
 
-void ft_create_thread(int it)
+void ft_create_thread(int it, char )
 {
     int i;
     pthread_t th[it];
@@ -44,3 +44,22 @@ void	*ft_routine(void	*arg)//aqui hacer los calculos con ese n de cosas ◦ time
 	printf("hilo %d bien impreso\n", i);
 	return (0);
 }
+
+int	time ()//asi se miden los microsegundos 
+{
+	struct timeval start;
+	struct timeval end;
+	long mls;
+	long s;
+	long total;
+
+	mls = 0;
+	gettimeofday(&start, NULL);
+	gettimeofday(&end, NULL);
+	s = end.tv_sec - start.tv_sec;
+	mls = end.tv_usec - start.tv_usec;
+	total = (s * 1000000) + mls;
+
+}
+
+void	ft_define()

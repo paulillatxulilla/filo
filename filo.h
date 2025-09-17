@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:30 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/10 19:04:44 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:34:31 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 # include <pthread.h>
 
 int	ft_atoi(const char	*str);
-void ft_create_thread(int it);
-void	*ft_routine();
+int ft_checknum(char *str);
 
-/* typedef struct s_philo
+typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
@@ -34,25 +33,29 @@ void	*ft_routine();
 	size_t			time_to_die;
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
-	size_t			start_time;
+	// size_t			start_time;
 	int				num_of_philos;
 	int				num_times_to_eat;
 	int				*dead;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	*o_fork;
 	pthread_mutex_t	*write_lock;
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*meal_lock;
 }					t_philo;
 
-typedef struct s_program
+typedef struct s_pilot
 {
 	int				dead_flag;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
-	t_philo			*philos;
-}					t_program; */
+	t_philo			*philo;
+}					t_pilot;
+
+void ft_create_thread(t_pilot	*philo);
+void	*ft_routine(void	*philo);
+void	ft_asign(t_philo *philo, char **argv);
 
 //memset = llena un espacio (str) de un carácter (c) n veces, str= hola, memset(str, x, 2), str = xxla
 //printf
@@ -68,3 +71,4 @@ typedef struct s_program
 //pthread_mutex_destroy
 //pthread_mutex_lock
 //pthread_mutex_unlock
+#endif

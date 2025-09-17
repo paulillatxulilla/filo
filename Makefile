@@ -6,13 +6,13 @@
 #    By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/03 13:44:03 by padan-pe          #+#    #+#              #
-#    Updated: 2025/09/08 18:28:45 by padan-pe         ###   ########.fr        #
+#    Updated: 2025/09/17 18:03:09 by padan-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 INCLUDE = -I. #directorio de cabeceras (dir actual)
 SRC_FILES = main.c thread.c utils.c
 OBJ_FILES = $(SRC_FILES:.c=.o)

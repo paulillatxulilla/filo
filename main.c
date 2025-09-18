@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:26 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/17 18:37:37 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/18 19:14:37 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	ft_asign(t_philo *philo, char **argv)
 	philo->time_to_sleep = ft_atoi(argv[4]);
 	if (argv[5] != NULL)
 		philo->num_times_to_eat = ft_atoi(argv[5]);
-    philo->thread = 0;
-	philo->id = 1;
+    else
+        philo->num_times_to_eat = -1;
 }

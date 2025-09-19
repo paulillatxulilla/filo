@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:30 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/17 18:34:31 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:02:32 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-int	ft_atoi(const char	*str);
-int ft_checknum(char *str);
 
 typedef struct s_philo
 {
@@ -33,7 +31,7 @@ typedef struct s_philo
 	size_t			time_to_die;
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
-	// size_t			start_time;
+	size_t			start_time;
 	int				num_of_philos;
 	int				num_times_to_eat;
 	int				*dead;
@@ -51,11 +49,17 @@ typedef struct s_pilot
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
 	t_philo			*philo;
+	pthread_mutex_t	*forks;
 }					t_pilot;
 
-void ft_create_thread(t_pilot	*philo);
+int		ft_atoi(const char	*str);
+int 	ft_checknum(char *str);
+int 	ft_parse_args(char **argv);
+void 	ft_create_thread(t_pilot	*philo);
 void	*ft_routine(void	*philo);
-void	ft_asign(t_philo *philo, char **argv);
+void	ft_asign_general(t_philo *philo, char **argv);
+void	ft_asign_pilot(t_pilot *pilot, char **argv);
+void	ft_asign_philo(t_pilot *pilot, char **argv);
 
 //memset = llena un espacio (str) de un carácter (c) n veces, str= hola, memset(str, x, 2), str = xxla
 //printf

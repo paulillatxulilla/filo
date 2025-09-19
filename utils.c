@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:32:35 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/10 17:58:30 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:23:48 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,5 @@ int	ft_atoi(const char *str)
 		return (-1);
 	return ((int)result);
 }
+
+void	ft_kill()

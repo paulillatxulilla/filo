@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:26 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/19 18:07:16 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/25 19:40:13 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	ft_asign_pilot(&pilot, argv);
 	ft_asign_philo(&pilot, argv);
     ft_create_thread(&pilot);
+    ft_kill(&pilot);
     return (0);
     //argv[1] = n de filosofos
     //argv[2] = tiempo para morir (tienen que comer antes de ese tiempo)

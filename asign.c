@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:00:27 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/19 18:02:47 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/25 19:41:26 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void    ft_asign_philo(t_pilot *pilot, char **argv)
         pilot->philo[i].id = i + 1;
         pilot->philo[i].eating = 0;
         pilot->philo[i].meals_eaten = 0;
-        pilot->philo[i].start_time = //funcion para el tiempo;
-        pilot->philo[i].last_meal = //funcion para el tiempo;
+        pilot->philo[i].start_time = ft_time();
+        pilot->philo[i].last_meal = ft_time();
         pilot->philo[i].write_lock = &pilot->write_lock;
         pilot->philo[i].dead_lock = &pilot->dead_lock;
         pilot->philo[i].meal_lock = &pilot->meal_lock;

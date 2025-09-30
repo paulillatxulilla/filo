@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:00:32 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/25 19:23:37 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:54:56 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 int	ft_death_check(t_philo *philo)
 {
 	pthread_mutex_lock(philo->meal_lock);
+	// printf("TIME -> %zu\n", (ft_time() - philo->last_meal));	
 	if ((ft_time() - philo->last_meal) >= philo->time_to_die
-	&& philo->eating == 0)
-	{
+		/* && philo->eating == 0 */)
+	{		
 		pthread_mutex_unlock(philo->meal_lock);
 		return (1);
 	}
-	pthread_mutex_unlock(philo->meal_lock);
+	pthread_mutex_unlock(philo->meal_lock);	
 	return (0);
 }
 

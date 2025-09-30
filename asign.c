@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:00:27 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/25 19:41:26 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:10:23 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void    ft_asign_philo(t_pilot *pilot, char **argv)
         pilot->philo[i].write_lock = &pilot->write_lock;
         pilot->philo[i].dead_lock = &pilot->dead_lock;
         pilot->philo[i].meal_lock = &pilot->meal_lock;
-        pilot->philo[i].dead = &pilot->dead_flag;
+        pilot->philo[i].dead = &pilot->dead_flag;        
         pilot->philo[i].fork = &pilot->forks[i];
         if (i == 0)
 		pilot->philo->o_fork = &pilot->forks[ft_atoi(argv[1]) - 1];

@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:56:04 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 16:43:15 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:34:23 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@ void ft_create_thread(t_pilot	*pilot)
     i = 0;
     if (pthread_create(&monitor, NULL, &ft_monitor_routine, pilot->philo) != 0)
 		ft_kill(pilot);
-	if (pthread_join(monitor, NULL) != 0)
-		ft_kill(pilot);
 	while (pilot->philo[0].num_of_philos > i)
 	{
 		if (pthread_create(&pilot->philo[i].thread, NULL, &ft_routine, &pilot->philo[i]) != 0)
 			ft_kill(pilot);
+		i++;
+	}
+	i = 0;
+	if (pthread_join(monitor, NULL) != 0)
+		ft_kill(pilot);
+	while (pilot->philo[0].num_of_philos > i)//para no joder el prgorama
+	{
 		if (pthread_join(pilot->philo[i].thread, NULL) != 0)
 			ft_kill(pilot);
-        i++;
-    }
+		i++;	
+	}
 }
 
 void	*ft_routine(void	*pointer)
@@ -38,10 +43,8 @@ void	*ft_routine(void	*pointer)
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 == 0)
 		usleep(1);
-	printf("[%d]\n", *philo->dead);
 	while (ft_death_flag_check(philo) == 0)
 	{
-		printf("PEPE\n");
 		ñam(philo);
 		zzz(philo);
 		hmm(philo);

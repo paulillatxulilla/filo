@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 15:46:23 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/23 16:46:36 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/30 18:02:28 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	ñam(t_philo *philo)
 	pthread_mutex_lock(philo->meal_lock);
 	philo->last_meal = ft_time();
 	philo->meals_eaten++;
-	pthread_mutex_unlock(philo->meal_lock);
 	usleep(philo->time_to_eat);
+	pthread_mutex_unlock(philo->meal_lock);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->fork);
 	pthread_mutex_unlock(philo->o_fork);

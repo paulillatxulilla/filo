@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:00:27 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 16:10:23 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/09/30 18:18:09 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 void    ft_asign_pilot(t_pilot *pilot, char **argv)
 {
+    int i;
+
+    i = 0;
     pilot->philo = malloc(sizeof(t_philo) * ft_atoi(argv[1]));
     pilot->forks = malloc(sizeof(pthread_mutex_t) * ft_atoi(argv[1]));
     pilot->dead_flag = 0;
     pthread_mutex_init(&pilot->write_lock, NULL);
 	pthread_mutex_init(&pilot->dead_lock, NULL);
 	pthread_mutex_init(&pilot->meal_lock, NULL);
+    while (i < ft_atoi(argv[1]))
+    {
+        pthread_mutex_init(&pilot->forks[i], NULL);
+        i++;
+    }
+    
 }
 
 void    ft_asign_philo(t_pilot *pilot, char **argv)
@@ -40,11 +49,8 @@ void    ft_asign_philo(t_pilot *pilot, char **argv)
         pilot->philo[i].meal_lock = &pilot->meal_lock;
         pilot->philo[i].dead = &pilot->dead_flag;        
         pilot->philo[i].fork = &pilot->forks[i];
-        if (i == 0)
-		pilot->philo->o_fork = &pilot->forks[ft_atoi(argv[1]) - 1];
-        else
-            pilot->philo->o_fork = &pilot->forks[i - 1];
-			i++;
+        pilot->philo[i].o_fork = &pilot->forks[(i + pilot->philo[0].num_of_philos - 1) % pilot->philo[0].num_of_philos];
+		i++;
 		}
 	}
 	

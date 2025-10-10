@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:56:04 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 17:34:23 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:17:40 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void ft_create_thread(t_pilot	*pilot)
 	i = 0;
 	if (pthread_join(monitor, NULL) != 0)
 		ft_kill(pilot);
-	while (pilot->philo[0].num_of_philos > i)//para no joder el prgorama
+	while (pilot->philo[0].num_of_philos > i)
 	{
 		if (pthread_join(pilot->philo[i].thread, NULL) != 0)
 			ft_kill(pilot);
@@ -42,12 +42,24 @@ void	*ft_routine(void	*pointer)
 	
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 == 0)
-		usleep(1);
-	while (ft_death_flag_check(philo) == 0)
+		ft_usleep(1);
+	while (1)
 	{
-		ñam(philo);
-		zzz(philo);
-		hmm(philo);
+		if (ft_death_flag_check(philo) == 0)
+			ñam(philo);
+		else
+			break ;
+		if (ft_death_flag_check(philo) == 0)	
+			zzz(philo);
+		else
+			break ;
+		if (ft_death_flag_check(philo) == 0)
+			hmm(philo);
+		else
+		{
+			ft_printf("ha muerto", philo, philo->id);
+			break ;
+		}
 	}
 	return (pointer);
 }
@@ -77,9 +89,4 @@ void	ft_kill(t_pilot *pilot)
 		pthread_mutex_destroy(&pilot->forks[i]);
 		i++;
 	}
-/* 	while(i <= pilot->philo[0].num_of_philos)
-	{
-		free(&pilot->philo[i]);
-		i--;
-	} */
 }

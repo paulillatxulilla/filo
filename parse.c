@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:03:06 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 15:59:42 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:55:27 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,29 @@ int ft_checknum(char *str)
     return (1);
 }
 
+int ft_isdigit(char *arg)
+{
+    int i;
+    
+    i = 0;
+    while(arg[i])
+    {
+        if (arg[i] < 48 || arg[i] > 57)
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 int ft_parse_args(char **argv)
 {
-    if (ft_atoi(argv[1]) == -1|| ft_atoi(argv[2]) == -1|| ft_atoi(argv[3]) == -1
+    if (ft_isdigit(argv[1]) == 0 || ft_isdigit(argv[2]) == 0 || ft_isdigit(argv[3]) == 0
+	|| ft_isdigit(argv[4]) == 0)
+	{
+		printf("hola\n");
+	    return (0);
+	}
+    if (ft_atoi(argv[1]) == -1 || ft_atoi(argv[2]) == -1 || ft_atoi(argv[3]) == -1
 	|| ft_atoi(argv[4]) == -1)
 	{
 		printf("Error en argumentos\n");

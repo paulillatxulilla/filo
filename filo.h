@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:30 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 16:26:09 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:43:40 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_pilot
 
 int		ft_atoi(const char	*str);
 int 	ft_checknum(char *str);
+int ft_isdigit(char *arg);
 int 	ft_parse_args(char **argv);
 void 	ft_create_thread(t_pilot	*pilot);
 void	*ft_routine(void	*pointer);
@@ -70,6 +71,7 @@ int	ft_eaten(t_philo *philo);
 int	ft_dead(t_philo *philo);
 int	ft_death_check(t_philo *philo);
 void	ft_kill(t_pilot *pilot);
+int		ft_usleep(size_t mili);
 //memset = llena un espacio (str) de un carácter (c) n veces, str= hola, memset(str, x, 2), str = xxla
 //printf
 //malloc

@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:00:27 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 18:18:09 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:05:09 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void    ft_asign_pilot(t_pilot *pilot, char **argv)
     {
         pthread_mutex_init(&pilot->forks[i], NULL);
         i++;
-    }
-    
+    } 
 }
 
 void    ft_asign_philo(t_pilot *pilot, char **argv)
@@ -50,7 +49,8 @@ void    ft_asign_philo(t_pilot *pilot, char **argv)
         pilot->philo[i].dead = &pilot->dead_flag;        
         pilot->philo[i].fork = &pilot->forks[i];
         pilot->philo[i].o_fork = &pilot->forks[(i + pilot->philo[0].num_of_philos - 1) % pilot->philo[0].num_of_philos];
-		i++;
+		// printf("philo %d o_fork id %d\n", pilot->philo[i].id, ((i + pilot->philo[0].num_of_philos - 1) % pilot->philo[0].num_of_philos) + 1);
+        i++;
 		}
 	}
 	

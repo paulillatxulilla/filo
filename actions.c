@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 15:46:23 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/09/30 18:02:28 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:23:35 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,36 @@ void	hmm(t_philo *philo)
 void	zzz(t_philo *philo)
 {
 	ft_printf("zzzzzzzzzzzz (durmiendo)", philo, philo->id);
-	usleep(philo->time_to_sleep);
+	ft_usleep(philo->time_to_sleep);
 }
 
 void	ñam(t_philo *philo)
 {
-	pthread_mutex_lock(philo->fork);
-	ft_printf("ha cogido un tenedor", philo, philo->id);
 	if (philo->num_of_philos == 1)
 	{
-		usleep(philo->time_to_die);
-		pthread_mutex_unlock(philo->fork);
+		printf("0 philo 1 ha cogido un tenedor\n");
+		ft_usleep(philo->time_to_die);
+		printf("%zu philo 1 ha muerto\n", philo->time_to_die);
 		return ;
 	}
+	pthread_mutex_lock(philo->fork);
+	if (ft_death_check(philo) == 0)
+		ft_printf("ha cogido un tenedor", philo, philo->id);
+	else
+		return ;
 	pthread_mutex_lock(philo->o_fork);
-	ft_printf("ha cogido otro tenedor", philo, philo->id);
+	if (ft_death_check(philo) == 0)
+		ft_printf("ha cogido otro tenedor", philo, philo->id);
+	else
+		return ;
 	philo->eating = 1;
 	ft_printf("ñam ñam ñam (comiendo)", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);
-	philo->last_meal = ft_time();
 	philo->meals_eaten++;
-	usleep(philo->time_to_eat);
+	philo->last_meal = ft_time();
 	pthread_mutex_unlock(philo->meal_lock);
 	philo->eating = 0;
+	ft_usleep(philo->time_to_eat);
 	pthread_mutex_unlock(philo->fork);
 	pthread_mutex_unlock(philo->o_fork);
 }

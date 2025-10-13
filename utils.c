@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:32:35 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/10 18:40:13 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:14:14 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,14 @@ void	ft_printf(char *str, t_philo *philo, int id)
 	size_t time;
 
 	time = (ft_time() - philo->start_time);
-	pthread_mutex_lock(philo->write_lock);
-	//if (ft_death_check(philo) == 0)
+	pthread_mutex_lock(philo->dead_lock);
+	if (*philo->dead == 0)
+	{
+		pthread_mutex_lock(philo->write_lock);
 		printf("%zu philo %d %s\n", time, id, str);
-
-	//	printf("%zu philo ha muerto %d \n", time, id);
-	pthread_mutex_unlock(philo->write_lock);
-
+		pthread_mutex_unlock(philo->write_lock);
+	}
+	pthread_mutex_unlock(philo->dead_lock);
 }
 
 int	ft_usleep(size_t mili)

@@ -6,13 +6,13 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:00:27 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/02 15:05:09 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/13 17:08:02 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filo.h"
 
-void    ft_asign_pilot(t_pilot *pilot, char **argv)
+void    ft_asign_pilot(t_pilot *pilot, char **argv)//asgina valores al monitor
 {
     int i;
 
@@ -30,7 +30,7 @@ void    ft_asign_pilot(t_pilot *pilot, char **argv)
     } 
 }
 
-void    ft_asign_philo(t_pilot *pilot, char **argv)
+void    ft_asign_philo(t_pilot *pilot, char **argv)//asgna valores a los philos
 {
 	int i;
 	
@@ -49,12 +49,11 @@ void    ft_asign_philo(t_pilot *pilot, char **argv)
         pilot->philo[i].dead = &pilot->dead_flag;        
         pilot->philo[i].fork = &pilot->forks[i];
         pilot->philo[i].o_fork = &pilot->forks[(i + pilot->philo[0].num_of_philos - 1) % pilot->philo[0].num_of_philos];
-		// printf("philo %d o_fork id %d\n", pilot->philo[i].id, ((i + pilot->philo[0].num_of_philos - 1) % pilot->philo[0].num_of_philos) + 1);
         i++;
 		}
 	}
 	
-void	ft_asign_general(t_philo *philo, char **argv)
+void	ft_asign_general(t_philo *philo, char **argv)//asgina tiempos
 {
 	philo->num_of_philos = ft_atoi(argv[1]);
 	philo->time_to_die = ft_atoi(argv[2]);

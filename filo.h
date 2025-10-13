@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:09:30 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/10 18:43:40 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:24:33 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_pilot
 
 int		ft_atoi(const char	*str);
 int 	ft_checknum(char *str);
-int ft_isdigit(char *arg);
+int 	ft_isdigit(char *arg);
 int 	ft_parse_args(char **argv);
 void 	ft_create_thread(t_pilot	*pilot);
 void	*ft_routine(void	*pointer);

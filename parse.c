@@ -6,13 +6,13 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:03:06 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/10 18:55:27 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/13 17:07:08 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filo.h"
 
-int ft_checknum(char *str)
+int ft_checknum(char *str)//para parsear el 5º argumento
 {
     int i;
 
@@ -29,7 +29,7 @@ int ft_checknum(char *str)
     return (1);
 }
 
-int ft_isdigit(char *arg)
+int ft_isdigit(char *arg)//parsear letras en números
 {
     int i;
     
@@ -43,12 +43,12 @@ int ft_isdigit(char *arg)
     return (1);
 }
 
-int ft_parse_args(char **argv)
+int ft_parse_args(char **argv)//parsear argumentos
 {
     if (ft_isdigit(argv[1]) == 0 || ft_isdigit(argv[2]) == 0 || ft_isdigit(argv[3]) == 0
 	|| ft_isdigit(argv[4]) == 0)
 	{
-		printf("hola\n");
+		printf("Error en argumentos\n");
 	    return (0);
 	}
     if (ft_atoi(argv[1]) == -1 || ft_atoi(argv[2]) == -1 || ft_atoi(argv[3]) == -1

@@ -6,13 +6,13 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:56:04 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/10 18:17:40 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:43:46 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filo.h"
 
-void ft_create_thread(t_pilot	*pilot)
+void ft_create_thread(t_pilot	*pilot)//crea monitor y pphilos
 {
 	pthread_t	monitor;
     int i;
@@ -36,57 +36,51 @@ void ft_create_thread(t_pilot	*pilot)
 	}
 }
 
-void	*ft_routine(void	*pointer)
+void	*ft_routine(void	*pointer)//rutina filos
 {
 	t_philo *philo;
 	
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 == 0)
 		ft_usleep(1);
-	while (1)
-	{
-		if (ft_death_flag_check(philo) == 0)
-			ñam(philo);
-		else
-			break ;
-		if (ft_death_flag_check(philo) == 0)	
-			zzz(philo);
-		else
-			break ;
-		if (ft_death_flag_check(philo) == 0)
-			hmm(philo);
-		else
-		{
-			ft_printf("ha muerto", philo, philo->id);
-			break ;
-		}
+	while (ft_death_flag_check(philo) == 0)
+	{		
+		// pthread_mutex_lock(philo->dead_lock);
+		// if (*philo->dead == 1)
+		// break ;
+		// pthread_mutex_unlock(philo->dead_lock);
+		ñam(philo);
+		zzz(philo);
+		hmm(philo);
 	}
 	return (pointer);
 }
 
-int	ft_death_flag_check(t_philo *philo)
+int	ft_death_flag_check(t_philo *philo)//true/false si la dead flag está activada
 {
 	pthread_mutex_lock(philo->dead_lock);
 	if (*philo->dead == 1)
 	{
-		pthread_mutex_unlock(philo->dead_lock);		
+		pthread_mutex_unlock(philo->dead_lock);
 		return(1);
 	}
 	pthread_mutex_unlock(philo->dead_lock);
 	return(0);
 }
 
-void	ft_kill(t_pilot *pilot)
+void	ft_kill(t_pilot *pilot)//liberar memoria
 {
 	int i;
 
 	i = 0;
-	pthread_mutex_destroy(&pilot->write_lock);
-	pthread_mutex_destroy(&pilot->meal_lock);
-	pthread_mutex_destroy(&pilot->dead_lock);
 	while(i < pilot->philo[0].num_of_philos)
 	{
 		pthread_mutex_destroy(&pilot->forks[i]);
 		i++;
 	}
+	free(pilot->forks);
+	free(pilot->philo);
+	pthread_mutex_destroy(&pilot->write_lock);
+	pthread_mutex_destroy(&pilot->meal_lock);
+	pthread_mutex_destroy(&pilot->dead_lock);
 }

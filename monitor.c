@@ -6,10 +6,9 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:00:32 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/13 18:25:54 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:26:03 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "filo.h"
 
@@ -22,17 +21,18 @@ int	ft_death_check(t_philo *philo)
 		pthread_mutex_unlock(philo->meal_lock);
 		return (1);
 	}
-	pthread_mutex_unlock(philo->meal_lock);	
+	pthread_mutex_unlock(philo->meal_lock);
 	return (0);
 }
 
 int	ft_dead(t_philo *philo)
 {
-	int i;
-	size_t time;
+	int		i;
+	size_t	time;
+
 	time = (ft_time() - philo->start_time);
 	i = 0;
-	while(i < philo[0].num_of_philos)
+	while (i < philo[0].num_of_philos)
 	{
 		if (ft_death_check(&philo[i]) == 1)
 		{
@@ -51,8 +51,8 @@ int	ft_dead(t_philo *philo)
 
 int	ft_eaten(t_philo *philo)
 {
-	int i;
-	int ate;
+	int	i;
+	int	ate;
 
 	i = 0;
 	ate = 0;
@@ -78,11 +78,11 @@ int	ft_eaten(t_philo *philo)
 
 void	*ft_monitor_routine(void *pointer)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)pointer;
 	while (1)
-		if(ft_eaten(philo) == 1 || ft_dead(philo) == 1)
+		if (ft_eaten(philo) == 1 || ft_dead(philo) == 1)
 			break ;
 	return (pointer);
 }

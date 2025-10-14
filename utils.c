@@ -6,7 +6,7 @@
 /*   By: padan-pe <padan-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:32:35 by padan-pe          #+#    #+#             */
-/*   Updated: 2025/10/13 18:14:14 by padan-pe         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:10:27 by padan-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,18 @@ int	ft_atoi(const char *str)
 	return ((int)result);
 }
 
-size_t	ft_time()
+size_t	ft_time(void)
 {
 	struct timeval	time;
-	
+
 	if (gettimeofday(&time, NULL) == -1)
 		printf("Error en cálculo de tiempo\n");
-	return(time.tv_sec * 1000 + time.tv_usec / 1000);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
 void	ft_printf(char *str, t_philo *philo, int id)
 {
-	size_t time;
+	size_t	time;
 
 	time = (ft_time() - philo->start_time);
 	pthread_mutex_lock(philo->dead_lock);
